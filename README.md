@@ -480,7 +480,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Developer:** Lewis Munene Muthee  
 **Student ID:** 138833  
-**Email:** [your-email@strathmore.edu](mailto:your-email@strathmore.edu)  
+**Email:** [lewis.muthee@strathmore.edu](mailto:your-email@strathmore.edu)  
 **Institution:** Strathmore University  
 **Supervisor:** Mr. Kevin Omondi  
 
