@@ -1,34 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.jsx
+import React from 'react';
+import Header from './components/layout/Header';
+import './App.css';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">
-            🌟 Tumaini Platform
-          </h1>
-          <p className="text-xl text-gray-600 mb-8">
-            Academic Stress Management for Strathmore University Students
-          </p>
-          <div className="bg-white rounded-lg shadow-lg p-8 max-w-md mx-auto">
-            <h2 className="text-2xl font-semibold mb-4 text-blue-600">
-              Welcome to Your Wellness Journey
-            </h2>
-            <p className="text-gray-700 mb-6">
-              Track your stress, journal your thoughts, and connect with peer support.
+    <div className="App">
+      {/* Show the header with auth props since we're testing */}
+      <Header showAuth={true} />
+      
+      {/* Temporary content to see our header in action */}
+      <main className="main-content">
+        <div className="welcome-section">
+          <div className="container">
+            <h1 className="welcome-title">
+              🌟 Tumaini Platform Preview 🌟
+            </h1>
+            <p className="welcome-text">
+              Welcome to the future of student wellness at Strathmore University! 
+              Our header is serving those official university vibes while keeping 
+              mental health support front and center. ✨
             </p>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors w-full">
-              Get Started
-            </button>
+            
+            <div className="preview-features">
+              <div className="feature-card">
+                <h3>🔐 Secure Authentication</h3>
+                <p>University email validation with Google sign-in option</p>
+              </div>
+              
+              <div className="feature-card">
+                <h3>📊 Stress Tracking</h3>
+                <p>Daily wellness check-ins with mood and sleep monitoring</p>
+              </div>
+              
+              <div className="feature-card">
+                <h3>📝 Digital Journaling</h3>
+                <p>Private journaling with sentiment analysis for crisis detection</p>
+              </div>
+              
+              <div className="feature-card">
+                <h3>🆘 Crisis Support</h3>
+                <p>Immediate access to crisis resources and counselor alerts</p>
+              </div>
+            </div>
+            
+            <div className="coming-soon">
+              <h2>Coming Soon: Authentication Pages! 🚀</h2>
+              <p>We're about to build the most beautiful login/register experience!</p>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

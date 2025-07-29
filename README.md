@@ -101,29 +101,29 @@ This project is developed as part of the Bachelor of Science in Informatics and 
 
 ```
 tumaini-platform/
-├── client/                     # React Frontend (PWA)
-│   ├── public/
-│   │   ├── manifest.json       # PWA manifest configuration
-│   │   ├── sw.js              # Service worker for offline functionality
-│   │   └── icons/             # PWA app icons (various sizes)
-│   ├── src/
-│   │   ├── components/        # Reusable React components
-│   │   │   ├── common/        # Shared UI components
-│   │   │   ├── auth/          # Authentication components
-│   │   │   ├── stress/        # Stress tracking components
-│   │   │   ├── journal/       # Digital journaling components
-│   │   │   ├── peer/          # Peer support components
-│   │   │   └── crisis/        # Crisis intervention components
-│   │   ├── pages/             # Main page components
-│   │   ├── hooks/             # Custom React hooks
-│   │   ├── context/           # React context providers
-│   │   ├── utils/             # Utility functions
-│   │   ├── services/          # API service functions
-│   │   ├── styles/            # Global styles and Tailwind config
-│   │   └── assets/            # Images, fonts, and static assets
-│   ├── package.json
-│   └── vite.config.js         # Vite configuration
-├── server/                    # Node.js Backend API
+client/
+├── src/
+│   ├── components/
+│   │   ├── auth/
+│   │   │   ├── Login.jsx          // Main login component
+│   │   │   ├── Register.jsx       // Registration component  
+│   │   │   ├── ForgotPassword.jsx // Password recovery
+│   │   │   └── AuthLayout.jsx     // Shared auth page layout
+│   │   ├── layout/
+│   │   │   ├── Header.jsx         // Reusable header with Strathmore branding 🔥
+│   │   │   ├── Footer.jsx         // Clean footer with university links
+│   │   │   └── MainLayout.jsx     // Wrapper for authenticated pages
+│   ├── contexts/
+│   │   └── AuthContext.jsx        // Auth state management
+│   ├── services/
+│   │   └── authService.js         // Firebase auth functions
+│   ├── styles/
+│   │   ├── global.css             // Strathmore color variables
+│   │   └── auth.css               // Auth-specific styles
+│   ├── utils/
+│   │   └── validation.js          // Email validation (@strathmore.edu)
+│   ├── firebase.js                // Our config (already done!)
+│   └── App.jsx                   // Main app with routing├── server/                    # Node.js Backend API
 │   ├── config/               # Database and environment configuration
 │   ├── controllers/          # Route controllers for API endpoints
 │   ├── models/              # MongoDB schemas and models

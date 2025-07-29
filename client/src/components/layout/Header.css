@@ -1,0 +1,265 @@
+/* src/components/layout/Header.css */
+
+/* Strathmore University Color Variables */
+:root {
+  --strathmore-blue: #1e3a8a;
+  --strathmore-light-blue: #3b82f6;
+  --strathmore-red: #dc2626;
+  --strathmore-gold: #f59e0b;
+  --clean-white: #ffffff;
+  --subtle-gray: #f8fafc;
+  --text-gray: #64748b;
+  --border-gray: #e2e8f0;
+}
+
+.tumaini-header {
+  background: linear-gradient(135deg, var(--strathmore-blue) 0%, var(--strathmore-light-blue) 100%);
+  color: var(--clean-white);
+  padding: 1rem 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Brand Section */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.university-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-right: 1.5rem;
+  border-right: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.university-logo .logo-placeholder {
+  width: 50px;
+  height: 50px;
+  background: var(--clean-white);
+  color: var(--strathmore-blue);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.university-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.university-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.125rem;
+}
+
+.platform-subtitle {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.platform-branding {
+  display: flex;
+  flex-direction: column;
+}
+
+.platform-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(45deg, var(--clean-white), var(--strathmore-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.platform-tagline {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-top: -0.25rem;
+  font-weight: 300;
+}
+
+/* Navigation */
+.header-navigation {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: var(--clean-white);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.nav-link:active {
+  transform: translateY(0);
+}
+
+/* Auth Section */
+.header-auth-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.crisis-support {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.help-text {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.crisis-btn {
+  background: var(--strathmore-red);
+  color: var(--clean-white);
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.3);
+}
+
+.crisis-btn:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(220, 38, 38, 0.4);
+}
+
+.crisis-btn:active {
+  transform: translateY(0);
+}
+
+.crisis-icon {
+  font-size: 1rem;
+}
+
+/* Profile Section */
+.header-profile {
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.user-greeting {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.profile-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--clean-white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.profile-icon {
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .header-brand {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .university-section {
+    border-right: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-right: 0;
+    padding-bottom: 0.75rem;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .platform-name {
+    font-size: 1.5rem;
+  }
+  
+  .crisis-support {
+    align-items: center;
+    text-align: center;
+  }
+}
