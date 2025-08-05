@@ -102,40 +102,145 @@ This project is developed as part of the Bachelor of Science in Informatics and 
 ```
 tumaini-platform/
 client/
-├── src/
-│   ├── components/
-│   │   ├── auth/
-│   │   │   ├── Login.jsx          // Main login component
-│   │   │   ├── Register.jsx       // Registration component  
-│   │   │   ├── ForgotPassword.jsx // Password recovery
-│   │   │   └── AuthLayout.jsx     // Shared auth page layout
-│   │   ├── layout/
-│   │   │   ├── Header.jsx         // Reusable header with Strathmore branding 🔥
-│   │   │   ├── Footer.jsx         // Clean footer with university links
-│   │   │   └── MainLayout.jsx     // Wrapper for authenticated pages
-│   ├── contexts/
-│   │   └── AuthContext.jsx        // Auth state management
-│   ├── services/
-│   │   └── authService.js         // Firebase auth functions
-│   ├── styles/
-│   │   ├── global.css             // Strathmore color variables
-│   │   └── auth.css               // Auth-specific styles
-│   ├── utils/
-│   │   └── validation.js          // Email validation (@strathmore.edu)
-│   ├── firebase.js                // Our config (already done!)
-│   └── App.jsx                   // Main app with routing├── server/                    # Node.js Backend API
-│   ├── config/               # Database and environment configuration
-│   ├── controllers/          # Route controllers for API endpoints
-│   ├── models/              # MongoDB schemas and models
-│   ├── routes/              # API route definitions
-│   ├── middleware/          # Custom middleware functions
-│   ├── utils/               # Server-side utility functions
-│   ├── package.json
-│   └── server.js            # Main server application
-├── docs/                    # Project documentation
-├── .gitignore              # Git ignore rules
-├── README.md               # This file
-└── package.json            # Root package.json for scripts
+├── 📁 public/
+│   ├── index.html ✅
+│   ├── manifest.json (PWA config) 🔄
+│   ├── sw.js (Service Worker) 🔄
+│   └── 📁 assets/logos/
+│       └── tumaini-logo.png ✅
+│
+├── 📁 src/
+│   ├── 📁 components/
+│   │   ├── 📁 auth/
+│   │   │   ├── Login.jsx ✅ (WORKING & GORGEOUS!)
+│   │   │   ├── Register.jsx ✅ (MULTI-STEP MAGIC!)
+│   │   │   ├── ForgotPassword.jsx ✅
+│   │   │   └── AuthLayout.jsx ✅
+│   │   │
+│   │   ├── 📁 layout/
+│   │   │   ├── LandingPage.jsx ✅ (MENTAL HEALTH ADVOCACY QUEEN!)
+│   │   │   ├── Header.jsx ✅
+│   │   │   ├── Footer.jsx ✅
+│   │   │   ├── MainLayout.jsx ✅
+│   │   │   └── Navbar.jsx ✅
+│   │   │
+│   │   ├── 📁 checkin/ 🆕 (THE NEW WELLNESS HUB!)
+│   │   │   ├── DailyCheckInModal.jsx 🚀 (POPUP MAGIC!)
+│   │   │   ├── StressSlider.jsx 🆕 (1-10 scale vibes)
+│   │   │   ├── MoodSelector.jsx 🆕 (Emoji mood picker)
+│   │   │   ├── SleepQualitySlider.jsx 🆕 (1-10 sleep scale)
+│   │   │   ├── CheckInSuccess.jsx 🆕 (Celebration time!)
+│   │   │   └── CheckInProgress.jsx 🆕 (Progress indicator)
+│   │   │
+│   │   ├── 📁 journaling/
+│   │   │   ├── JournalEditor.jsx 🔄 (Digital journaling)
+│   │   │   ├── JournalEntries.jsx 🔄 (Entry list)
+│   │   │   ├── JournalEntry.jsx 🔄 (Single entry)
+│   │   │   └── SentimentAnalysis.jsx 🔄 (Crisis detection)
+│   │   │
+│   │   ├── 📁 analytics/
+│   │   │   ├── AnalyticsDashboard.jsx 🔄 (Personal insights)
+│   │   │   ├── StressChart.jsx 🔄 (Trend visualization)
+│   │   │   ├── MoodChart.jsx 🔄
+│   │   │   ├── SleepChart.jsx 🔄
+│   │   │   ├── ProgressTracker.jsx 🔄
+│   │   │   └── InsightsCard.jsx 🔄
+│   │   │
+│   │   ├── 📁 resources/
+│   │   │   ├── CommunityResources.jsx 🔄 (Support info)
+│   │   │   ├── ResourceCard.jsx 🔄
+│   │   │   ├── CrisisHotlines.jsx 🔄
+│   │   │   ├── CampusCounseling.jsx 🔄
+│   │   │   └── SelfHelpMaterials.jsx 🔄
+│   │   │
+│   │   ├── 📁 crisis/
+│   │   │   ├── CrisisAlertButton.jsx 🔄 (Emergency protocols)
+│   │   │   ├── CrisisDetector.jsx 🔄 (Automated monitoring)
+│   │   │   ├── CrisisResources.jsx 🔄
+│   │   │   └── InterventionAlert.jsx 🔄
+│   │   │
+│   │   ├── 📁 profile/
+│   │   │   ├── UserProfile.jsx 🔄
+│   │   │   ├── PrivacySettings.jsx 🔄
+│   │   │   └── EmergencyContacts.jsx 🔄
+│   │   │
+│   │   └── 📁 shared/
+│   │       ├── LoadingSpinner.jsx 🔄
+│   │       ├── ErrorBoundary.jsx 🔄
+│   │       └── NotificationToast.jsx 🔄
+│   │
+│   ├── 📁 pages/
+│   │   ├── 📁 protected/ ✅ (PROTECTED ROUTES KINGDOM!)
+│   │   │   ├── HomePage.jsx ✅ (ABSOLUTE PERFECTION!)
+│   │   │   ├── StressTrackingPage.jsx 🔄 (NEXT UP!)
+│   │   │   ├── JournalingPage.jsx 🔄
+│   │   │   ├── AnalyticsPage.jsx 🔄
+│   │   │   ├── ResourcesPage.jsx 🔄
+│   │   │   └── ProfilePage.jsx 🔄
+│   │   │
+│   │   └── NotFoundPage.jsx 🔄
+│   │
+│   ├── 📁 hooks/
+│   │   ├── useAuth.js ✅ (Authentication state - WORKING!)
+│   │   ├── useCheckIn.js 🆕 (Daily check-in logic)
+│   │   ├── useStressTracking.js 🔄
+│   │   ├── useJournal.js 🔄
+│   │   ├── useCrisisDetection.js 🔄
+│   │   └── useAnalytics.js 🔄
+│   │
+│   ├── 📁 services/
+│   │   ├── 📁 firebase/
+│   │   │   ├── config.js ✅ (Firebase setup - CONFIGURED!)
+│   │   │   └── authService.js ✅ (Auth magic - WORKING!)
+│   │   ├── checkInService.js 🆕 (Daily check-in CRUD)
+│   │   ├── stressTracking.js 🔄 (Stress data operations)
+│   │   ├── journal.js 🔄 (Journal CRUD)
+│   │   ├── analytics.js 🔄 (Data analysis)
+│   │   ├── crisisDetection.js 🔄 (NLP/keyword analysis)
+│   │   └── notifications.js 🔄 (PWA notifications)
+│   │
+│   ├── 📁 contexts/
+│   │   ├── AuthContext.jsx ✅ (Global auth state - PERFECT!)
+│   │   ├── CheckInContext.jsx 🆕 (Check-in state management)
+│   │   ├── StressContext.js 🔄 (Stress data state)
+│   │   └── ThemeContext.js 🔄 (UI theme)
+│   │
+│   ├── 📁 routes/
+│   │   └── ProtectedRoute.jsx ✅ (Auth guard - WORKING PERFECTLY!)
+│   │
+│   ├── 📁 utils/
+│   │   ├── constants.js 🔄 (App constants)
+│   │   ├── validators.js 🔄 (Form validation)
+│   │   ├── dateHelpers.js 🆕 (Check-in timestamps)
+│   │   ├── chartHelpers.js 🔄 (Analytics helpers)
+│   │   ├── checkInHelpers.js 🆚 (Check-in utilities)
+│   │   └── moodEmojis.js 🆕 (Emoji mappings for mood)
+│   │
+│   ├── 📁 styles/
+│   │   ├── index.css ✅
+│   │   ├── globals.css 🔄
+│   │   ├── 📁 components/ 🔄 (Component-specific styles)
+│   │   └── 📁 themes/ 🔄 (Dark/light themes)
+│   │
+│   ├── App.jsx ✅ (UPDATED WITH ROUTING MAGIC!)
+│   └── main.jsx ✅
+│
+├── 📁 docs/
+│   ├── README.md ✅
+│   ├── API_DOCUMENTATION.md 🔄
+│   ├── DEPLOYMENT_GUIDE.md 🔄
+│   └── USER_MANUAL.md 🔄
+│
+├── 📁 tests/
+│   ├── 📁 components/
+│   ├── 📁 services/
+│   └── 📁 utils/
+│
+├── package.json ✅
+├── firebase.json 🔄 (Firebase hosting config)
+├── .env ✅ (Environment variables)
+├── .gitignore ✅
+└── README.md ✅
 ```
 
 ## 🚀 Installation & Setup

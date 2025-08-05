@@ -47,7 +47,7 @@ const Login = () => {
       await login(formData.email, formData.password);
       
       // Success! Navigate to dashboard (or home for now since we don't have dashboard yet)
-      navigate('/'); // Change to '/dashboard' when you build it!
+      navigate('/home'); // Change to '/dashboard' when you build it!
     } catch (error) {
       console.error('Login failed:', error);
       // Error is automatically set in the auth context
