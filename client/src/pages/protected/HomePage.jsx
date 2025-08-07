@@ -61,7 +61,7 @@ const HomePage = () => {
             <div className="flex items-center space-x-4">
              
                 <img 
-                  src="/public/assets/logos/tumaini-logo.png" 
+                  src="/assets/logos/tumaini-logo.png" 
                   alt="Tumaini Logo" 
                    className="h-16 w-auto object-contain"
                 />
