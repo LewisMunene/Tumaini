@@ -14,6 +14,7 @@ import ProtectedRoute from './routes/ProtectedRoute';
 
 // Import our protected pages - the wellness kingdom! 👑
 import HomePage from './pages/protected/HomePage';
+import DailyCheckInPage from './pages/protected/DailyCheckInPage';
 // import StressTrackingPage from './pages/protected/StressTrackingPage';
 // import JournalingPage from './pages/protected/JournalingPage';
 // import AnalyticsPage from './pages/protected/AnalyticsPage';
@@ -38,6 +39,16 @@ function App() {
               element={
                 <ProtectedRoute>
                   <HomePage />
+                </ProtectedRoute>
+              } 
+            />
+
+            {/* 🌟 NEW: Daily Check-in Flow - Where the self-care vibes happen! */}
+            <Route 
+              path="/daily-checkin" 
+              element={
+                <ProtectedRoute>
+                  <DailyCheckInPage />
                 </ProtectedRoute>
               } 
             />
@@ -87,6 +98,7 @@ function App() {
               } 
             />
              */}
+            
             {/* Legacy route redirects - keeping things smooth for users */}
             <Route path="/dashboard" element={<Navigate to="/home" replace />} />
             

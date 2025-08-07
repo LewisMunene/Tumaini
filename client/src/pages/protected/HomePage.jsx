@@ -1,115 +1,90 @@
-// src/pages/protected/HomePage.jsx - Your Wellness Command Center! 🌟✨
+// src/pages/protected/HomePage.jsx - Your Wellness Dashboard! 🌟
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
 const HomePage = () => {
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
-  const [currentTime, setCurrentTime] = useState(new Date());
-  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const [hasCheckedInToday, setHasCheckedInToday] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Update time every minute for that fresh feeling ✨
+  // Mock function - replace with actual Firebase check later
+  const checkDailyCheckInStatus = () => {
+    // TODO: Check Firebase for today's check-in
+    const lastCheckIn = localStorage.getItem(`lastCheckIn_${currentUser?.uid}`);
+    const today = new Date().toDateString();
+    return lastCheckIn === today;
+  };
+
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 60000);
+    if (currentUser) {
+      setHasCheckedInToday(checkDailyCheckInStatus());
+    }
+  }, [currentUser]);
 
-    return () => clearInterval(timer);
-  }, []);
+  const handleCheckInClick = () => {
+    setIsLoading(true);
+    // Small delay for smooth transition
+    setTimeout(() => {
+      navigate('/daily-checkin');
+      setIsLoading(false);
+    }, 500);
+  };
 
-  // Handle logout with style 💅
   const handleLogout = async () => {
     try {
       await logout();
-      navigate('/');
+      navigate('/login');
     } catch (error) {
-      console.error('Logout failed:', error);
+      console.error('Logout error:', error);
     }
   };
 
-  // Get personalized greeting based on time 🌅🌞🌙
   const getGreeting = () => {
-    const hour = currentTime.getHours();
-    if (hour < 12) return "Good morning";
-    if (hour < 17) return "Good afternoon";
-    return "Good evening";
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Good morning';
+    if (hour < 17) return 'Good afternoon';
+    return 'Good evening';
   };
 
-  // Get the user's first name from email or display name
-  const getUserName = () => {
-    if (currentUser?.displayName) {
-      return currentUser.displayName.split(' ')[0];
-    }
-    if (currentUser?.email) {
-      return currentUser.email.split('@')[0].split('.')[0];
-    }
-    return 'Bestie';
+  const getDisplayName = () => {
+    return currentUser?.displayName || currentUser?.email?.split('@')[0] || 'Bestie';
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
-      {/* Header with Navigation */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-slate-200 sticky top-0 z-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+      {/* Header */}
+      <header className="bg-gradient-to-r from-blue-600 to-blue-800 shadow-lg sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            
-            {/* Logo & Brand */}
-            <div className="flex items-center space-x-3">
-              <img 
-                src="/assets/logos/tumaini-logo.png" 
-                alt="Tumaini Logo" 
-                className="h-16 w-auto object-contain"
-               
-              />
-              <div className="flex items-center space-x-2">
-                
-                <div>
-                  <h3 className="text-xl font-bold">Tumaini</h3>
-                  <p className="text-blue-200 text-sm">Student Wellness Platform</p>
-                </div>
+          <div className="flex justify-between items-center h-20">
+            <div className="flex items-center space-x-4">
+             
+                <img 
+                  src="/public/assets/logos/tumaini-logo.png" 
+                  alt="Tumaini Logo" 
+                   className="h-16 w-auto object-contain"
+                />
+                <span className="text-white font-bold text-xl hidden">🧠</span>
+              
+              <div>
+                <h1 className="text-2xl font-bold text-white">
+                  TUMAINI
+                </h1>
+                <p className="text-blue-100 text-sm font-medium">Academic Stress Management</p>
               </div>
             </div>
-
-            {/* User Menu */}
+            
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-slate-600 hidden sm:block">
-                {getGreeting()}, {getUserName()}! ✨
+              <span className="text-white font-medium">
+                {getGreeting()}, {getDisplayName()}! ✨
               </span>
-              
-              {/* Logout Button */}
-              <div className="relative">
-                <button
-                  onClick={() => setShowLogoutConfirm(!showLogoutConfirm)}
-                  className="flex items-center space-x-2 px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-all duration-200"
-                >
-                  <span className="text-lg">👋</span>
-                  <span>Logout</span>
-                </button>
-
-                {/* Logout Confirmation Dropdown */}
-                {showLogoutConfirm && (
-                  <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-slate-200 p-4 z-50">
-                    <p className="text-sm text-slate-600 mb-3">
-                      Ready to log out? Your wellness journey will be here when you get back! 💝
-                    </p>
-                    <div className="flex space-x-2">
-                      <button
-                        onClick={handleLogout}
-                        className="flex-1 bg-red-500 hover:bg-red-600 text-white text-sm font-medium py-2 px-3 rounded-lg transition-colors duration-200"
-                      >
-                        Yes, log out
-                      </button>
-                      <button
-                        onClick={() => setShowLogoutConfirm(false)}
-                        className="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-700 text-sm font-medium py-2 px-3 rounded-lg transition-colors duration-200"
-                      >
-                        Stay here
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
+              <button
+                onClick={handleLogout}
+                className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-4 py-2 rounded-full transition-colors font-medium border border-white/20"
+              >
+                🚪 Logout
+              </button>
             </div>
           </div>
         </div>
@@ -117,158 +92,160 @@ const HomePage = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
         {/* Welcome Section */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-slate-800 mb-2">
-            {getGreeting()}, {getUserName()}! 🌟
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+            {getGreeting()}, {getDisplayName()}! ☀️
           </h2>
-          <p className="text-slate-600">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Your wellness journey continues here. How are you feeling today? 💚
           </p>
         </div>
 
-        {/* Quick Actions Dashboard */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          
-          {/* Daily Stress Check-in */}
-          <Link to="/stress-tracking" className="group">
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 group-hover:border-blue-300">
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center">
-                  <span className="text-2xl text-white">📊</span>
+        {/* Daily Check-in Section - The Star of the Show! */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+          {/* Daily Check-in Card */}
+          <div className="lg:col-span-2">
+            <div className={`relative overflow-hidden rounded-3xl shadow-lg transition-all duration-300 hover:shadow-xl ${
+              hasCheckedInToday 
+                ? 'bg-gradient-to-r from-green-400 to-blue-500' 
+                : 'bg-gradient-to-r from-purple-500 to-pink-500'
+            }`}>
+              <div className="absolute inset-0 bg-black bg-opacity-10"></div>
+              <div className="relative p-8 text-white">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 className="text-2xl font-bold mb-2">
+                      {hasCheckedInToday ? '✅ Daily Check-in Complete!' : '📝 Daily Check-in'}
+                    </h3>
+                    <p className="text-white/90 text-lg">
+                      {hasCheckedInToday 
+                        ? "You're absolutely crushing it today, bestie! Come back tomorrow for another check-in." 
+                        : "How's your stress today? Quick mood & stress level tracking to understand your patterns"
+                      }
+                    </p>
+                  </div>
+                  <div className="text-6xl">
+                    {hasCheckedInToday ? '🎉' : '💖'}
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-slate-800">Daily Check-in</h3>
-                  <p className="text-sm text-slate-500">How's your stress today?</p>
-                </div>
-              </div>
-              <p className="text-slate-600 text-sm">
-                Quick mood & stress level tracking to understand your patterns
-              </p>
-            </div>
-          </Link>
+                
+                {!hasCheckedInToday && (
+                  <button
+                    onClick={handleCheckInClick}
+                    disabled={isLoading}
+                    className="bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isLoading ? '✨ Loading...' : 'Start Check-in ✨'}
+                  </button>
+                )}
 
-          {/* Digital Journaling */}
-          <Link to="/journaling" className="group">
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 group-hover:border-purple-300">
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center">
-                  <span className="text-2xl text-white">✍️</span>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-slate-800">Journal</h3>
-                  <p className="text-sm text-slate-500">Write it out, bestie</p>
-                </div>
+                {hasCheckedInToday && (
+                  <div className="bg-white/20 px-6 py-3 rounded-full inline-block">
+                    <span className="font-semibold">Next check-in: Tomorrow morning 🌅</span>
+                  </div>
+                )}
               </div>
-              <p className="text-slate-600 text-sm">
-                Your private space to reflect and process your thoughts safely
-              </p>
             </div>
-          </Link>
+          </div>
 
-          {/* Analytics & Insights */}
-          <Link to="/analytics" className="group">
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 group-hover:border-green-300">
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center">
-                  <span className="text-2xl text-white">📈</span>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-slate-800">Your Insights</h3>
-                  <p className="text-sm text-slate-500">See your progress</p>
-                </div>
-              </div>
-              <p className="text-slate-600 text-sm">
-                Personalized analytics showing your wellness patterns and growth
-              </p>
-            </div>
-          </Link>
-
-          {/* Community Resources */}
-          <Link to="/resources" className="group">
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 group-hover:border-orange-300">
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center">
-                  <span className="text-2xl text-white">🤝</span>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-slate-800">Resources</h3>
-                  <p className="text-sm text-slate-500">We got you covered</p>
-                </div>
-              </div>
-              <p className="text-slate-600 text-sm">
-                Wellness resources, crisis support, and campus counseling info
-              </p>
-            </div>
-          </Link>
-
-          {/* Profile Settings */}
-          <Link to="/profile" className="group">
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 group-hover:border-indigo-300">
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-xl flex items-center justify-center">
-                  <span className="text-2xl text-white">⚙️</span>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-slate-800">Profile</h3>
-                  <p className="text-sm text-slate-500">Your account settings</p>
-                </div>
-              </div>
-              <p className="text-slate-600 text-sm">
-                Manage your account, privacy settings, and emergency contacts
-              </p>
-            </div>
-          </Link>
-
-          {/* Crisis Support - Always Accessible */}
-          <div className="bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl p-6 shadow-lg border-2 border-red-200">
-            <div className="flex items-center space-x-4 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-xl flex items-center justify-center animate-pulse">
-                <span className="text-2xl text-white">🆘</span>
-              </div>
+          {/* Quick Stats/Progress Card */}
+          <div className="bg-white rounded-3xl shadow-lg p-6">
+            <h3 className="text-xl font-bold text-gray-800 mb-4">Your Progress 📊</h3>
+            <div className="space-y-4">
               <div>
-                <h3 className="text-lg font-semibold text-red-800">Need Help Now?</h3>
-                <p className="text-sm text-red-600">Crisis support available 24/7</p>
+                <div className="flex justify-between text-sm font-medium text-gray-700 mb-1">
+                  <span>This Week's Check-ins</span>
+                  <span>4/7</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full" style={{width: '57%'}}></div>
+                </div>
               </div>
-            </div>
-            <div className="space-y-2">
-              <p className="text-red-700 text-sm font-medium">
-                You're not alone. We're here for you. 💝
-              </p>
-              <div className="flex space-x-2">
-                <a 
-                  href="tel:+254722178177" 
-                  className="flex-1 bg-red-500 hover:bg-red-600 text-white text-sm font-medium py-2 px-3 rounded-lg text-center transition-colors duration-200"
-                >
-                  Call Crisis Line
-                </a>
-                <Link 
-                  to="/resources"
-                  className="flex-1 bg-red-100 hover:bg-red-200 text-red-700 text-sm font-medium py-2 px-3 rounded-lg text-center transition-colors duration-200"
-                >
-                  Get Resources
-                </Link>
+              <div className="text-center pt-4 border-t border-gray-100">
+                <p className="text-2xl font-bold text-gray-800">57%</p>
+                <p className="text-sm text-gray-600">Weekly Goal Progress</p>
+                <p className="text-xs text-gray-500 mt-1">Keep it up, bestie! 💪</p>
               </div>
             </div>
           </div>
         </div>
 
+        {/* Other Wellness Features */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Journal Card */}
+          <div className="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl">
+                📔
+              </div>
+              <div className="ml-4">
+                <h3 className="text-xl font-bold text-gray-800">Journal</h3>
+                <p className="text-gray-600">Write it out, bestie</p>
+              </div>
+            </div>
+            <p className="text-gray-600 mb-4">Your private space to reflect and process your thoughts safely</p>
+            <button className="text-purple-600 font-semibold hover:text-purple-700 transition-colors">
+              Open Journal →
+            </button>
+          </div>
+
+          {/* Insights Card */}
+          <div className="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-green-600 rounded-2xl flex items-center justify-center text-white text-2xl">
+                📈
+              </div>
+              <div className="ml-4">
+                <h3 className="text-xl font-bold text-gray-800">Your Insights</h3>
+                <p className="text-gray-600">See your progress</p>
+              </div>
+            </div>
+            <p className="text-gray-600 mb-4">Personalized analytics showing your wellness patterns and growth</p>
+            <button className="text-green-600 font-semibold hover:text-green-700 transition-colors">
+              View Analytics →
+            </button>
+          </div>
+
+          {/* Crisis Support Card */}
+          <div className="bg-gradient-to-r from-red-50 to-pink-50 border border-red-200 rounded-3xl shadow-lg p-6">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-red-400 to-pink-500 rounded-2xl flex items-center justify-center text-white text-2xl">
+                🆘
+              </div>
+              <div className="ml-4">
+                <h3 className="text-xl font-bold text-gray-800">Need Help Now?</h3>
+                <p className="text-gray-600">Crisis support available 24/7</p>
+              </div>
+            </div>
+            <p className="text-gray-700 mb-4 font-medium">You're not alone. We're here for you. 💚</p>
+            <div className="space-y-2">
+              <button className="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-full font-semibold transition-colors">
+                Call Crisis Line
+              </button>
+              <button className="w-full bg-white text-red-500 border border-red-200 py-2 rounded-full font-semibold hover:bg-red-50 transition-colors">
+                Get Resources
+              </button>
+            </div>
+          </div>
+        </div>
+
         {/* Motivational Quote Section */}
-        <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200 text-center">
-          <p className="text-lg font-medium text-slate-700 mb-2">
-            "Your mental health journey is valid, your feelings matter, and you're absolutely crushing it just by being here." 
-          </p>
-          <p className="text-sm text-slate-500">
-            — The Tumaini Community 💚
-          </p>
+        <div className="mt-12 text-center">
+          <div className="bg-white rounded-3xl shadow-lg p-8 max-w-3xl mx-auto">
+            <p className="text-2xl font-medium text-gray-800 mb-4 italic">
+              "Your mental health journey is valid, your feelings matter, and you're absolutely crushing it just by being here."
+            </p>
+            <p className="text-gray-600">— The Tumaini Community 💚</p>
+          </div>
         </div>
 
         {/* Footer Note */}
         <div className="mt-8 text-center">
-          <p className="text-xs text-slate-500">
-            Tumaini provides wellness support and is not a substitute for professional medical care. 
-            <br />
+          <p className="text-sm text-gray-500">
+            Tumaini provides wellness support and is not a substitute for professional medical care.
+          </p>
+          <p className="text-sm text-gray-500">
             If you're experiencing a mental health emergency, please contact campus security or emergency services immediately.
           </p>
         </div>
