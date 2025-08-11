@@ -41,6 +41,14 @@ const HomePage = () => {
     }
   };
 
+  const handleNavigateToJournal = () => {
+    setIsLoading(true);
+    // Small delay for smooth transition
+    setTimeout(() => {
+    navigate('/journal');  
+    }, 500);
+  };
+
   const getGreeting = () => {
     const hour = new Date().getHours();
     if (hour < 12) return 'Good morning';
@@ -185,7 +193,8 @@ const HomePage = () => {
               </div>
             </div>
             <p className="text-gray-600 mb-4">Your private space to reflect and process your thoughts safely</p>
-            <button className="text-purple-600 font-semibold hover:text-purple-700 transition-colors">
+            <button className="text-purple-600 font-semibold hover:text-purple-700 transition-colors"
+              onClick={handleNavigateToJournal}>
               Open Journal →
             </button>
           </div>

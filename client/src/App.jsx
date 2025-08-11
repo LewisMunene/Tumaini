@@ -16,7 +16,7 @@ import ProtectedRoute from './routes/ProtectedRoute';
 import HomePage from './pages/protected/HomePage';
 import DailyCheckInPage from './pages/protected/DailyCheckInPage';
 // import StressTrackingPage from './pages/protected/StressTrackingPage';
-// import JournalingPage from './pages/protected/JournalingPage';
+import JournalingPage from './pages/protected/JournalingPage';
 // import AnalyticsPage from './pages/protected/AnalyticsPage';
 // import ResourcesPage from './pages/protected/ResourcesPage';
 // import ProfilePage from './pages/protected/ProfilePage';
@@ -60,10 +60,10 @@ function App() {
                   <StressTrackingPage />
                 </ProtectedRoute>
               } 
-            />
+            /> */}
             
             <Route 
-              path="/journaling" 
+              path="/journal" 
               element={
                 <ProtectedRoute>
                   <JournalingPage />
@@ -71,33 +71,33 @@ function App() {
               } 
             />
             
-            <Route 
+            {/* <Route 
               path="/analytics" 
               element={
                 <ProtectedRoute>
                   <AnalyticsPage />
                 </ProtectedRoute>
               } 
-            />
+            /> */}
             
-            <Route 
+            {/* <Route 
               path="/resources" 
               element={
                 <ProtectedRoute>
                   <ResourcesPage />
                 </ProtectedRoute>
               } 
-            />
+            /> */}
             
-            <Route 
+            {/* <Route 
               path="/profile" 
               element={
                 <ProtectedRoute>  
                   <ProfilePage />
                 </ProtectedRoute>
               } 
-            />
-             */}
+            /> */}
+            
             
             {/* Legacy route redirects - keeping things smooth for users */}
             <Route path="/dashboard" element={<Navigate to="/home" replace />} />
