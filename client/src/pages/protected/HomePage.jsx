@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import Footer from '../../components/layout/Footer';
 
 const HomePage = () => {
   const { currentUser, logout } = useAuth();
@@ -48,6 +49,15 @@ const HomePage = () => {
     navigate('/journal');  
     }, 500);
   };
+
+  const handleNavigateToAnalytics = () => {
+    setIsLoading(true);
+    // Small delay for smooth transition
+    setTimeout(() => {
+      navigate('/analytics');
+    }, 500);
+  };
+
 
   const getGreeting = () => {
     const hour = new Date().getHours();
@@ -211,7 +221,9 @@ const HomePage = () => {
               </div>
             </div>
             <p className="text-gray-600 mb-4">Personalized analytics showing your wellness patterns and growth</p>
-            <button className="text-green-600 font-semibold hover:text-green-700 transition-colors">
+            <button className="text-green-600 font-semibold hover:text-green-700 transition-colors"
+            onClick={handleNavigateToAnalytics} disabled={isLoading}
+            >
               View Analytics →
             </button>
           </div>
@@ -258,8 +270,12 @@ const HomePage = () => {
             If you're experiencing a mental health emergency, please contact campus security or emergency services immediately.
           </p>
         </div>
+     
+
       </main>
+      <Footer />
     </div>
+    
   );
 };
 

@@ -17,7 +17,7 @@ import HomePage from './pages/protected/HomePage';
 import DailyCheckInPage from './pages/protected/DailyCheckInPage';
 // import StressTrackingPage from './pages/protected/StressTrackingPage';
 import JournalingPage from './pages/protected/JournalingPage';
-// import AnalyticsPage from './pages/protected/AnalyticsPage';
+import AnalyticsPage from './pages/protected/AnalyticsPage';
 // import ResourcesPage from './pages/protected/ResourcesPage';
 // import ProfilePage from './pages/protected/ProfilePage';
 
@@ -71,14 +71,14 @@ function App() {
               } 
             />
             
-            {/* <Route 
+            <Route 
               path="/analytics" 
               element={
                 <ProtectedRoute>
                   <AnalyticsPage />
                 </ProtectedRoute>
               } 
-            /> */}
+            />
             
             {/* <Route 
               path="/resources" 

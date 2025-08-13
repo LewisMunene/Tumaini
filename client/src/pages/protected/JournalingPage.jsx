@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import SmartJournal from '../../components/journal/SmartJournal';
 import { submitJournalEntry, getRecentJournalEntries, getJournalAnalytics } from '../../services/journalService';
-
+import Footer from '../../components/layout/Footer';
 const JournalingPage = ({ onNavigate }) => {
   const { currentUser } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,8 +38,7 @@ const JournalingPage = ({ onNavigate }) => {
     loadJournalData();
   }, [currentUser]);
   
-  const handleNavigateHome = () => {
-    // For now, just go back in history or reload to home
+    const handleNavigateHome = () => {
     if (window.history.length > 1) {
       window.history.back();
     } else {
@@ -147,8 +146,9 @@ const JournalingPage = ({ onNavigate }) => {
         {/* Header Section */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-between mb-6">
-            <button 
-              onClick={() => onNavigate && onNavigate('/home')}
+           
+             <button 
+              onClick={handleNavigateHome}
               className="flex items-center text-gray-600 hover:text-gray-800 transition-colors group"
             >
               <span className="text-2xl mr-2 group-hover:translate-x-[-2px] transition-transform">←</span>
@@ -355,11 +355,20 @@ const JournalingPage = ({ onNavigate }) => {
             <p className="text-purple-600 font-medium mt-4">
               Stay awesome, stay true, stay you! We're all in this together. No cap. 🤘
             </p>
+            
           </div>
+          
+          
         </div>
+      
       </div>
+        <Footer />  
     </div>
+    
+    
   );
+    
 };
+
 
 export default JournalingPage;
