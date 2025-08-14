@@ -18,7 +18,7 @@ import DailyCheckInPage from './pages/protected/DailyCheckInPage';
 // import StressTrackingPage from './pages/protected/StressTrackingPage';
 import JournalingPage from './pages/protected/JournalingPage';
 import AnalyticsPage from './pages/protected/AnalyticsPage';
-// import ResourcesPage from './pages/protected/ResourcesPage';
+import ResourcesPage from './pages/protected/ResourcePage';
 // import ProfilePage from './pages/protected/ProfilePage';
 
 function App() {
@@ -53,15 +53,7 @@ function App() {
               } 
             />
             
-            {/* <Route 
-              path="/stress-tracking" 
-              element={
-                <ProtectedRoute>
-                  <StressTrackingPage />
-                </ProtectedRoute>
-              } 
-            /> */}
-            
+           
             <Route 
               path="/journal" 
               element={
@@ -80,14 +72,14 @@ function App() {
               } 
             />
             
-            {/* <Route 
+            <Route 
               path="/resources" 
               element={
                 <ProtectedRoute>
                   <ResourcesPage />
                 </ProtectedRoute>
               } 
-            /> */}
+            />
             
             {/* <Route 
               path="/profile" 

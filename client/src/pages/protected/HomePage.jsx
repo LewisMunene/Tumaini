@@ -58,6 +58,14 @@ const HomePage = () => {
     }, 500);
   };
 
+  const handleNavigateToResources = () => {
+    setIsLoading(true);   
+    // Small delay for smooth transition
+    setTimeout(() => {  
+      navigate('/resources');
+    }, 500);
+  };
+
 
   const getGreeting = () => {
     const hour = new Date().getHours();
@@ -244,7 +252,8 @@ const HomePage = () => {
               <button className="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-full font-semibold transition-colors">
                 Call Crisis Line
               </button>
-              <button className="w-full bg-white text-red-500 border border-red-200 py-2 rounded-full font-semibold hover:bg-red-50 transition-colors">
+              <button className="w-full bg-white text-red-500 border border-red-200 py-2 rounded-full font-semibold hover:bg-red-50 transition-colors"
+                onClick={handleNavigateToResources}>
                 Get Resources
               </button>
             </div>
