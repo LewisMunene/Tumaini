@@ -448,7 +448,7 @@ const GratitudeComponent = ({ gratitude, onGratitudeChange }) => (
       <p className="text-sm text-gray-500 italic">
         "Gratitude makes sense of our past, brings peace for today, and creates a vision for tomorrow." ✨
       </p>
-       <Footer/>
+      
     </div>
    
   </div>
