@@ -1,4 +1,4 @@
-// src/pages/protected/ResourcePage.jsx
+// src/pages/protected/ResourcePage.jsx - FIXED ALIGNMENT BESTIE! 💙✨
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../../components/layout/Navbar';
@@ -7,10 +7,11 @@ const ResourcePage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
       <Navbar onNavigate={() => window.location.href = '/home'} />
-      {/* Header Section */}
-      <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-16">
+      
+      {/* Header Section - Fixed spacing with proper navbar offset */}
+      <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white pt-28 pb-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4">
+          <div className="text-center space-y-6">
             <h1 className="text-4xl sm:text-5xl font-bold">Mental Health Resources</h1>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
               Your comprehensive guide to mental health support, wellness resources, and crisis assistance. 
@@ -20,19 +21,19 @@ const ResourcePage = () => {
         </div>
       </div>
 
-      {/* Crisis Support Banner */}
-      <div className="bg-red-600 text-white py-4">
+      {/* Crisis Support Banner - Better spacing */}
+      <div className="bg-red-600 text-white py-6">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0">
+          <div className="flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0">
             <div className="flex items-center space-x-3">
               <span className="text-2xl">🚨</span>
-              <span className="font-semibold">Crisis Support Available 24/7</span>
+              <span className="font-semibold text-lg">Crisis Support Available 24/7</span>
             </div>
-            <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
-              <a href="tel:988" className="bg-white text-red-600 px-4 py-2 rounded-lg font-semibold hover:bg-red-50 transition-colors">
+            <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-6">
+              <a href="tel:988" className="bg-white text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-red-50 transition-colors shadow-md">
                 Call 988 - Suicide & Crisis Lifeline
               </a>
-              <a href="sms:741741" className="bg-red-700 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-800 transition-colors">
+              <a href="sms:741741" className="bg-red-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-800 transition-colors shadow-md">
                 Text HOME to 741741
               </a>
             </div>
@@ -40,14 +41,14 @@ const ResourcePage = () => {
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* Main Content - Better spacing between sections */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         
         {/* Crisis Support Section */}
-        <section className="mb-16">
+        <section className="mb-20">
           <div className="bg-red-50 rounded-2xl p-8 border-2 border-red-200">
             <div className="flex items-center space-x-3 mb-6">
-              <span className="text-3xl">💝</span>
+              <span className="text-3xl">💗</span>
               <h2 className="text-3xl font-bold text-red-800">Immediate Crisis Support</h2>
             </div>
             <p className="text-red-700 mb-6 text-lg leading-relaxed">
@@ -61,7 +62,7 @@ const ResourcePage = () => {
                 <div className="space-y-2">
                   <p className="font-semibold text-red-600">📞 Call: 988</p>
                   <p className="font-semibold text-red-600">💬 Text: 988</p>
-                  <p className="font-semibold text-red-600">🌐 Chat: suicidepreventionlifeline.org</p>
+                  <p className="font-semibold text-red-600">🌐 Chat: <a href="https://988lifeline.org/chat/" target="_blank" rel="noopener noreferrer">988lifeline.org/chat</a></p>
                 </div>
               </div>
               <div className="bg-white rounded-xl p-6 shadow-md border border-red-200">
@@ -69,7 +70,7 @@ const ResourcePage = () => {
                 <p className="text-gray-700 mb-4">24/7 support via text message. Trained crisis counselors available immediately.</p>
                 <div className="space-y-2">
                   <p className="font-semibold text-red-600">💬 Text HOME to 741741</p>
-                  <p className="font-semibold text-red-600">🌐 crisistextline.org</p>
+                  <p className="font-semibold text-red-600">🌐 <a href="https://www.crisistextline.org/" target="_blank" rel="noopener noreferrer">crisistextline.org</a></p>
                 </div>
               </div>
             </div>
@@ -77,7 +78,7 @@ const ResourcePage = () => {
         </section>
 
         {/* Managing Stress & Anxiety */}
-        <section className="mb-16">
+        <section className="mb-20">
           <div className="bg-blue-50 rounded-2xl p-8 border-2 border-blue-200">
             <div className="flex items-center space-x-3 mb-6">
               <span className="text-3xl">🌊</span>
@@ -90,7 +91,7 @@ const ResourcePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md border border-blue-200">
                 <h3 className="text-xl font-semibold text-blue-800 mb-3">Anxiety and Depression Association of America</h3>
                 <p className="text-gray-700 mb-4">Evidence-based resources on anxiety disorders, including college-specific guidance.</p>
-                <a href="https://adaa.org/understanding-anxiety/related-illnesses/other-related-conditions/stress/college-students" 
+                <a href="https://adaa.org/finding-help/helping-others/college-students/facts" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800">
@@ -122,7 +123,7 @@ const ResourcePage = () => {
         </section>
 
         {/* Depression Support */}
-        <section className="mb-16">
+        <section className="mb-20">
           <div className="bg-purple-50 rounded-2xl p-8 border-2 border-purple-200">
             <div className="flex items-center space-x-3 mb-6">
               <span className="text-3xl">🌸</span>
@@ -157,7 +158,7 @@ const ResourcePage = () => {
         </section>
 
         {/* Academic Pressure */}
-        <section className="mb-16">
+        <section className="mb-20">
           <div className="bg-orange-50 rounded-2xl p-8 border-2 border-orange-200">
             <div className="flex items-center space-x-3 mb-6">
               <span className="text-3xl">📚</span>
@@ -170,7 +171,7 @@ const ResourcePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md border border-orange-200">
                 <h3 className="text-xl font-semibold text-orange-800 mb-3">Time Management for Students</h3>
                 <p className="text-gray-700 mb-4">Evidence-based strategies for managing coursework and reducing academic overwhelm.</p>
-                <a href="https://www.khanacademy.org/college-careers-more/college-admissions/applying-to-college/a/time-management-strategies" 
+                <a href="https://blog.khanacademy.org/introducing-study-plans-khanmigo-kl/" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    className="inline-flex items-center text-orange-600 font-semibold hover:text-orange-800">
@@ -180,7 +181,7 @@ const ResourcePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md border border-orange-200">
                 <h3 className="text-xl font-semibold text-orange-800 mb-3">Test Anxiety Resources</h3>
                 <p className="text-gray-700 mb-4">Techniques to manage exam stress and improve academic performance through anxiety reduction.</p>
-                <a href="https://www.apa.org/ed/precollege/psn/2013/09/test-anxiety" 
+                <a href="https://www.umass.edu/studentsuccess/test-anxiety" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    className="inline-flex items-center text-orange-600 font-semibold hover:text-orange-800">
@@ -190,7 +191,7 @@ const ResourcePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md border border-orange-200">
                 <h3 className="text-xl font-semibold text-orange-800 mb-3">Perfectionism & Mental Health</h3>
                 <p className="text-gray-700 mb-4">Understanding how perfectionism affects student mental health and practical coping strategies.</p>
-                <a href="https://www.psychologytoday.com/us/blog/the-joy-in-between/202008/perfectionism-and-college-students" 
+                <a href="https://www.psychologytoday.com/us/basics/perfectionism" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    className="inline-flex items-center text-orange-600 font-semibold hover:text-orange-800">
@@ -202,7 +203,7 @@ const ResourcePage = () => {
         </section>
 
         {/* Self-Care & Wellness */}
-        <section className="mb-16">
+        <section className="mb-20">
           <div className="bg-green-50 rounded-2xl p-8 border-2 border-green-200">
             <div className="flex items-center space-x-3 mb-6">
               <span className="text-3xl">🌱</span>
@@ -215,7 +216,7 @@ const ResourcePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md border border-green-200">
                 <h3 className="text-xl font-semibold text-green-800 mb-3">Building Healthy Habits</h3>
                 <p className="text-gray-700 mb-4">Science-backed approaches to developing sustainable wellness routines that fit student life.</p>
-                <a href="https://www.nimh.nih.gov/health/topics/caring-for-your-mental-health" 
+                <a href="https://mhanys.org/a-z-topic-guide/caring-for-your-mental-health/" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    className="inline-flex items-center text-green-600 font-semibold hover:text-green-800">
@@ -225,7 +226,7 @@ const ResourcePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md border border-green-200">
                 <h3 className="text-xl font-semibold text-green-800 mb-3">Sleep & Mental Health</h3>
                 <p className="text-gray-700 mb-4">Understanding the critical connection between sleep quality and mental wellness for students.</p>
-                <a href="https://www.sleepfoundation.org/how-sleep-works/why-do-we-need-sleep/sleep-and-mental-health" 
+                <a href="https://www.mentalhealth.org.uk/explore-mental-health/publications/sleep-matters-impact-sleep-health-and-wellbeing" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    className="inline-flex items-center text-green-600 font-semibold hover:text-green-800">
@@ -237,7 +238,7 @@ const ResourcePage = () => {
         </section>
 
         {/* Building Healthy Relationships */}
-        <section className="mb-16">
+        <section className="mb-20">
           <div className="bg-pink-50 rounded-2xl p-8 border-2 border-pink-200">
             <div className="flex items-center space-x-3 mb-6">
               <span className="text-3xl">🤝</span>
@@ -250,7 +251,7 @@ const ResourcePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md border border-pink-200">
                 <h3 className="text-xl font-semibold text-pink-800 mb-3">Healthy Communication Skills</h3>
                 <p className="text-gray-700 mb-4">Learn effective communication strategies for building stronger, more supportive relationships.</p>
-                <a href="https://www.psychologytoday.com/us/basics/communication" 
+                <a href="https://www.psychologytoday.com/us/blog/daring-to-love/201809/the-key-to-healthy-communication" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    className="inline-flex items-center text-pink-600 font-semibold hover:text-pink-800">
@@ -260,7 +261,7 @@ const ResourcePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md border border-pink-200">
                 <h3 className="text-xl font-semibold text-pink-800 mb-3">Setting Healthy Boundaries</h3>
                 <p className="text-gray-700 mb-4">Understanding and practicing healthy boundary-setting for better mental health and relationships.</p>
-                <a href="https://www.verywellmind.com/what-are-personal-boundaries-how-do-i-get-some-3145055" 
+                <a href="https://health.ucdavis.edu/blog/cultivating-health/how-to-set-boundaries-and-why-it-matters-for-your-mental-health/2024/03" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    className="inline-flex items-center text-pink-600 font-semibold hover:text-pink-800">
@@ -272,7 +273,7 @@ const ResourcePage = () => {
         </section>
 
         {/* Campus Resources */}
-        <section className="mb-16">
+        <section className="mb-20">
           <div className="bg-indigo-50 rounded-2xl p-8 border-2 border-indigo-200">
             <div className="flex items-center space-x-3 mb-6">
               <span className="text-3xl">🏫</span>
@@ -286,8 +287,8 @@ const ResourcePage = () => {
                 <h3 className="text-xl font-semibold text-indigo-800 mb-3">Strathmore University Counseling Services</h3>
                 <p className="text-gray-700 mb-4">Professional counseling and mental health support available to all Strathmore students.</p>
                 <div className="space-y-2 text-sm text-gray-600">
-                  <p>📧 Email: counseling@strathmore.edu</p>
-                  <p>📞 Phone: +254 703 034 000</p>
+                  <p>📧 Email: <a href="mailto:info@strathmore.edu">info@strathmore.edu</a></p>
+                  <p>📞 Phone: <a href="tel:+254703034000">+254 703 034 000</a></p>
                   <p>📍 Location: Student Centre, Ground Floor</p>
                   <p>🕐 Hours: Monday-Friday, 8:00 AM - 5:00 PM</p>
                 </div>
@@ -296,9 +297,9 @@ const ResourcePage = () => {
                 <h3 className="text-xl font-semibold text-indigo-800 mb-3">Kenya Mental Health Helpline</h3>
                 <p className="text-gray-700 mb-4">Free, confidential mental health support available 24/7 for all Kenyan residents.</p>
                 <div className="space-y-2 text-sm text-gray-600">
-                  <p>📞 Toll-Free: 0800 720 606</p>
-                  <p>📱 WhatsApp: 0711 693 990</p>
-                  <p>📧 Email: info@ke.emergency.org</p>
+                  <p>📞 Toll-Free: <a href="tel:0800720606">0800 720 606</a></p>
+                  <p>📱 WhatsApp: <a href="https://wa.me/254711693990">0711 693 990</a></p>
+                  <p>📧 Email: <a href="mailto:info@basicneedskenya.org">info@basicneedskenya.org</a></p>
                   <p>🌐 Available in English and Kiswahili</p>
                 </div>
               </div>

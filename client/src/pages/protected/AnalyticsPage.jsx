@@ -110,7 +110,7 @@ const AnalyticsPage = () => {
 
           {/* Quick PSA */}
           <div className="bg-gradient-to-r from-purple-100 to-pink-100 border border-purple-200 rounded-2xl p-6 max-w-4xl mx-auto mb-8">
-            <h3 className="text-lg font-bold text-gray-800 mb-3">Real talk that's low-key important: 💅</h3>
+            <h3 className="text-lg font-bold text-gray-800 mb-3">Real talk that's low-key important: </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
               <div className="flex items-center space-x-2">
                 <span className="text-xl">📊</span>
@@ -122,7 +122,7 @@ const AnalyticsPage = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-xl">💖</span>
-                <span className="text-gray-700">You're doing amazing sweetie</span>
+                <span className="text-gray-700">You're doing amazing😉</span>
               </div>
             </div>
           </div>
@@ -218,7 +218,7 @@ const AnalyticsPage = () => {
               </div>
             </div>
             <p className="text-purple-600 font-medium mt-6">
-              Stay curious, stay consistent, stay absolutely iconic! We're here for this wellness glow-up! No cap! 💅
+              Stay curious, stay consistent, stay absolutely iconic! We're here for this wellness glow-up! No cap! 
             </p>
           </div>
         </div>
