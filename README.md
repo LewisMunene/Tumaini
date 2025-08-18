@@ -11,7 +11,8 @@
 ## 📊 System Overview
 
 ![Tumaini Platform Interface]
-![alt text](image.png)
+<img width="2960" height="1851" alt="image" src="https://github.com/user-attachments/assets/a828e6c8-c629-430a-8c62-ee071b42e86b" />
+
 *Main Dashboard showcasing comprehensive wellness tracking and analytics*
 
 Tumaini (Swahili for "hope") is an innovative Progressive Web Application developed as part of the Bachelor of Science in Informatics and Computer Science program at Strathmore University. This comprehensive digital platform addresses the critical gap in academic stress management for university students, providing real-time stress monitoring, digital journaling, peer support networks, and crisis intervention protocols within a unified, accessible digital environment.
@@ -116,27 +117,35 @@ Current support systems primarily operate reactively, addressing stress only aft
 ## 📱 System Screenshots
 
 ### Authentication & Onboarding
-![Login Interface]![alt text](image-4.png)
-*Welcoming login interface with crisis resource access*
+<img width="2962" height="1861" alt="image" src="https://github.com/user-attachments/assets/0b6a5721-84de-401e-b507-59a992bc5773" />
 
-![Registration Process]![alt text](image-5.png)
+*Welcoming login interface with crisis resource access*
+<img width="2954" height="1852" alt="image" src="https://github.com/user-attachments/assets/d096f6ae-01d4-4d73-a620-71d1761e71e7" />
+
 *Multi-step registration with progress indicators*
 
 ### Core Platform Features
-![Daily Check-in]![alt text](image-3.png)
+<img width="2964" height="1858" alt="image" src="https://github.com/user-attachments/assets/19969982-7a8f-4def-9f1d-e3385e3a6e99" />
+
 *Six-step daily wellness assessment interface*
 
-![Analytics Dashboard]![alt text](image-2.png)
+![Analytics Dashboard]
+<img width="2957" height="1863" alt="image" src="https://github.com/user-attachments/assets/44f43d45-5ba5-4ced-8f11-8151f1bc001a" />
+
 *Comprehensive wellness data visualization with timeline selection*
 
-![Digital Journal]![alt text](image-1.png)
+![Digital Journal]
+<img width="2954" height="1865" alt="image" src="https://github.com/user-attachments/assets/72c1401f-bc02-4eea-9284-95fe018649ce" />
+
 *Secure digital journaling with reflection tracking*
 
 ### Crisis Support & Resources
-![Crisis Support]![alt text](image-6.png)
+<img width="2954" height="1852" alt="image" src="https://github.com/user-attachments/assets/244c1feb-88d0-42c8-b268-66e6cd99a295" />
+
 *Immediate access to mental health crisis resources*
 
-![Mental Health Advocacy]![alt text](image-7.png)
+<img width="2955" height="1856" alt="image" src="https://github.com/user-attachments/assets/1319e9a0-83e4-40cd-9a68-c8a14c1e4fb4" />
+
 *Landing page emphasizing mental health importance and stigma reduction*
 
 ## 🗂 Project Structure
