@@ -8,6 +8,8 @@ import SleepQualitySlider from '../../components/checkin/SleepQualitySlider';
 import StressSlider from '../../components/checkin/StressSlider';
 import CheckInProgress from '../../components/checkin/CheckInProgress';
 import CheckInSuccess from '../../components/checkin/CheckInSuccess';
+import Navbar from '../../components/layout/Navbar';
+
 
 const DailyCheckInPage = () => {
   const navigate = useNavigate();
@@ -149,8 +151,11 @@ const DailyCheckInPage = () => {
   const currentStepData = getCurrentStepData();
 
   return (
+    
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-8 px-4">
+       <Navbar onNavigate={() => navigate('/home')} />
       <div className="max-w-4xl mx-auto">
+       
         
         {/* Progress Component - This is so satisfying to watch! */}
         <div className="mb-8">
@@ -162,15 +167,7 @@ const DailyCheckInPage = () => {
         </div>
 
         {/* Back Button - Clean and simple */}
-        <div className="mb-6">
-          <button 
-            onClick={() => navigate('/home')}
-            className="flex items-center text-gray-600 hover:text-gray-800 transition-colors group"
-          >
-            <span className="text-2xl mr-2 group-hover:translate-x-[-2px] transition-transform">←</span>
-            <span>Back to home</span>
-          </button>
-        </div>
+        
 
         {/* Current Step Header */}
         <div className="text-center mb-8">
@@ -451,8 +448,11 @@ const GratitudeComponent = ({ gratitude, onGratitudeChange }) => (
       <p className="text-sm text-gray-500 italic">
         "Gratitude makes sense of our past, brings peace for today, and creates a vision for tomorrow." ✨
       </p>
+       <Footer/>
     </div>
+   
   </div>
+  
 );
 
 export default DailyCheckInPage;

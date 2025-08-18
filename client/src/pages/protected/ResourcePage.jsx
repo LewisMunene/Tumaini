@@ -1,10 +1,12 @@
 // src/pages/protected/ResourcePage.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Navbar from '../../components/layout/Navbar';
 
 const ResourcePage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+      <Navbar onNavigate={() => window.location.href = '/home'} />
       {/* Header Section */}
       <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

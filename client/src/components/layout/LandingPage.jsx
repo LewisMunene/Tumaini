@@ -1,13 +1,14 @@
 // src/components/LandingPage.jsx - MENTAL HEALTH ADVOCACY QUEEN! 💙✨
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Header from './Header';
+import Navbar from './Navbar';
 import Footer from './Footer';
 
 const LandingPage = () => {
   return (
     <div className="min-h-screen w-full flex flex-col bg-white">
-      <Header showAuth={true} showNavigation={false} />
+      {/* Using the reusable Navbar component */}
+      <Navbar />
       
       {/* Hero Section - Mental Health Awareness */}
       <section className="relative overflow-hidden py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-blue-50 to-white">

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import WellnessAnalytics from '../../components/analytics/WellnessAnalytics';
 // import { getUserWellnessStats, getRecentCheckIns } from '../../services/checkInService';
+import Navbar from '../../components/layout/Navbar';
 
 const AnalyticsPage = () => {
   const { currentUser } = useAuth();
@@ -89,21 +90,12 @@ const AnalyticsPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-8 px-4">
       <div className="max-w-7xl mx-auto">
         
+        <Navbar onNavigate={handleNavigateHome} />
         {/* Header Section */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-between mb-6">
-            <button 
-              onClick={handleNavigateHome}
-              className="flex items-center text-gray-600 hover:text-gray-800 transition-colors group"
-            >
-              <span className="text-2xl mr-2 group-hover:translate-x-[-2px] transition-transform">←</span>
-              <span>Back to home</span>
-            </button>
             
-            <div className="text-right">
-              <p className="text-sm text-gray-500">Wellness Intelligence</p>
-              <p className="text-lg font-semibold text-gray-800">Your Analytics</p>
-            </div>
+           
           </div>
 
           <div className="mb-8">

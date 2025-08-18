@@ -9,17 +9,17 @@ import Register from './components/auth/Register';
 import ForgotPassword from './components/auth/ForgotPassword';
 import LandingPage from './components/layout/LandingPage';
 
+
 // Import our shiny new protected route guard 🛡️
 import ProtectedRoute from './routes/ProtectedRoute';
 
 // Import our protected pages - the wellness kingdom! 👑
 import HomePage from './pages/protected/HomePage';
 import DailyCheckInPage from './pages/protected/DailyCheckInPage';
-// import StressTrackingPage from './pages/protected/StressTrackingPage';
 import JournalingPage from './pages/protected/JournalingPage';
 import AnalyticsPage from './pages/protected/AnalyticsPage';
 import ResourcesPage from './pages/protected/ResourcePage';
-// import ProfilePage from './pages/protected/ProfilePage';
+
 
 function App() {
   return (
@@ -80,15 +80,6 @@ function App() {
                 </ProtectedRoute>
               } 
             />
-            
-            {/* <Route 
-              path="/profile" 
-              element={
-                <ProtectedRoute>  
-                  <ProfilePage />
-                </ProtectedRoute>
-              } 
-            /> */}
             
             
             {/* Legacy route redirects - keeping things smooth for users */}

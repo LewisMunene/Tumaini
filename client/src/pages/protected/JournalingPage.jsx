@@ -4,6 +4,8 @@ import { useAuth } from '../../contexts/AuthContext';
 import SmartJournal from '../../components/journal/SmartJournal';
 import { submitJournalEntry, getRecentJournalEntries, getJournalAnalytics } from '../../services/journalService';
 import Footer from '../../components/layout/Footer';
+import Navbar from '../../components/layout/Navbar';
+
 const JournalingPage = ({ onNavigate }) => {
   const { currentUser } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -142,23 +144,15 @@ const JournalingPage = ({ onNavigate }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 py-8 px-4">
       <div className="max-w-6xl mx-auto">
+        <Navbar onNavigate={onNavigate} />
         
         {/* Header Section */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-between mb-6">
            
-             <button 
-              onClick={handleNavigateHome}
-              className="flex items-center text-gray-600 hover:text-gray-800 transition-colors group"
-            >
-              <span className="text-2xl mr-2 group-hover:translate-x-[-2px] transition-transform">←</span>
-              <span>Back to home</span>
-            </button>
+             
             
-            <div className="text-right">
-              <p className="text-sm text-gray-500">Digital Wellness</p>
-              <p className="text-lg font-semibold text-gray-800">Your Safe Space</p>
-            </div>
+           
           </div>
 
           <div className="mb-6">

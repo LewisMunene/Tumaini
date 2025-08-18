@@ -1,139 +1,171 @@
-// src/components/layout/Navbar.jsx - TUMAINI LOGO NAVBAR QUEEN! 🧭✨
-import React, { useState } from 'react';
+// src/components/layout/Navbar.jsx - ENHANCED BLUE GODDESS NAVBAR! 🧭💙✨
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = ({ currentUser, onSignOut }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  // Check if current path is active
+  // Scroll effect for navbar animations - serving main character energy! 💅
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 20;
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Check if current path is active - serving main character energy! 💅
   const isActive = (path) => location.pathname === path;
 
   const navLinks = [
-    { path: '/dashboard', label: 'Dashboard', icon: '🏠' },
-    { path: '/checkin', label: 'Daily Check-in', icon: '✨' },
+    { path: '/home', label: 'Dashboard', icon: '🏠' },
+    { path: '/daily-checkin', label: 'Daily Check-in', icon: '✨' },
     { path: '/journal', label: 'Journal', icon: '📖' },
+    { path: '/analytics', label: 'Analytics', icon: '📊' },
     { path: '/resources', label: 'Resources', icon: '🌟' },
-    { path: '/progress', label: 'Progress', icon: '📈' },
-    { path: '/support', label: 'Support', icon: '🤝' },
   ];
 
+  const handleSignOut = () => {
+    setIsProfileOpen(false);
+    if (onSignOut) onSignOut();
+  };
+
   return (
-    <nav className="py-4">
-      <div className="flex items-center justify-between">
-        
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`px-4 py-2 rounded-xl font-medium text-sm transition-all duration-200 flex items-center space-x-2 ${
-                isActive(link.path)
-                  ? 'bg-white/20 text-white shadow-lg'
-                  : 'text-blue-100 hover:text-white hover:bg-white/10'
-              }`}
-            >
-              <span className="text-base">{link.icon}</span>
-              <span>{link.label}</span>
-            </Link>
-          ))}
-        </div>
-
-        {/* Mobile Navigation Toggle */}
-        <div className="lg:hidden flex items-center space-x-4">
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-white hover:text-blue-200 p-2 rounded-lg hover:bg-white/10 transition-all duration-200"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-
-        {/* User Profile Section */}
-        <div className="hidden lg:flex items-center space-x-4">
-          <div className="flex items-center space-x-3">
-            <div className="text-right">
-              <p className="text-sm font-medium text-white">
-                {currentUser?.displayName?.split(' ')[0] || 'Student'}
-              </p>
-              <p className="text-xs text-blue-200">
-                {currentUser?.email}
-              </p>
-            </div>
-            
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-white text-blue-600 rounded-full flex items-center justify-center font-semibold shadow-md">
-                {currentUser?.displayName?.charAt(0) || currentUser?.email?.charAt(0) || 'U'}
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
+      scrolled 
+        ? 'bg-gradient-to-r from-blue-800/95 via-blue-700/95 to-blue-800/95 backdrop-blur-md shadow-2xl border-b border-blue-300/30' 
+        : 'bg-gradient-to-r from-blue-800 via-blue-700 to-blue-800 shadow-lg border-b border-blue-400/20'
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`flex items-center justify-between transition-all duration-300 ${
+          scrolled ? 'h-18' : 'h-20'
+        }`}>
+          
+          {/* Logo Section - Enhanced blue theme bestie! 💙 */}
+          <div className="flex items-center space-x-4">
+            <Link to="/dashboard" className="flex items-center space-x-4 group">
+              <div className="relative transition-transform duration-300 group-hover:scale-105">
+                <img 
+                  src="/assets/logos/tumaini-logo.png" 
+                  alt="Tumaini Logo" 
+                  className={`object-contain transition-all duration-300 ${
+                    scrolled ? 'h-14 w-auto' : 'h-16 w-auto'
+                  }`}
+                />  
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white animate-pulse shadow-lg"></div>
               </div>
-              
-              <button
-                onClick={onSignOut}
-                className="text-blue-200 hover:text-red-300 p-2 rounded-lg hover:bg-red-500/20 transition-all duration-200"
-                title="Sign out"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                </svg>
-              </button>
-            </div>
+              <div className="hidden sm:block">
+                <h1 className={`font-bold text-white transition-all duration-300 ${
+                  scrolled ? 'text-lg' : 'text-xl'
+                }`}>
+                  Tumaini
+                </h1>
+                <p className={`text-blue-100 -mt-1 transition-all duration-300 ${
+                  scrolled ? 'text-xs' : 'text-sm'
+                }`}>
+                  Academic Stress Management
+                </p>
+              </div>
+            </Link>
           </div>
-        </div>
 
-        {/* Mobile Profile */}
-        <div className="lg:hidden flex items-center space-x-2">
-          <div className="w-8 h-8 bg-white text-blue-600 rounded-full flex items-center justify-center font-semibold text-sm shadow-md">
-            {currentUser?.displayName?.charAt(0) || currentUser?.email?.charAt(0) || 'U'}
-          </div>
-          <button
-            onClick={onSignOut}
-            className="text-blue-200 hover:text-red-300 p-1 rounded-lg hover:bg-red-500/20 transition-all duration-200"
-            title="Sign out"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Navigation Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden mt-4 pb-4 border-t border-white/20">
-          <div className="grid grid-cols-2 gap-2 mt-4">
+          {/* Desktop Navigation - Spaced out blue vibes only! 💙 */}
+          <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`px-3 py-3 rounded-xl font-medium text-sm transition-all duration-200 flex flex-col items-center space-y-1 ${
+                className={`px-6 py-3 rounded-2xl font-medium text-sm transition-all duration-300 flex items-center space-x-3 relative overflow-hidden group hover:scale-105 hover:shadow-lg ${
                   isActive(link.path)
-                    ? 'bg-white/20 text-white shadow-lg'
-                    : 'text-blue-100 hover:text-white hover:bg-white/10'
+                    ? 'bg-white/25 text-white shadow-xl backdrop-blur-sm ring-2 ring-white/30'
+                    : 'text-blue-100 hover:text-white hover:bg-white/15 hover:backdrop-blur-sm'
                 }`}
               >
-                <span className="text-lg">{link.icon}</span>
-                <span className="text-xs text-center">{link.label}</span>
+                {isActive(link.path) && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-blue-200/20 animate-pulse rounded-2xl"></div>
+                )}
+                <span className="text-lg relative z-10 transition-transform duration-300 group-hover:scale-125">{link.icon}</span>
+                <span className="relative z-10 font-medium">{link.label}</span>
+                {isActive(link.path) && (
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full animate-bounce"></div>
+                )}
               </Link>
             ))}
           </div>
-          
-          {/* Mobile User Info */}
-          <div className="mt-4 pt-4 border-t border-white/20 flex items-center justify-between">
-            <div className="text-sm text-blue-100">
-              <p className="font-medium text-white">
-                {currentUser?.displayName?.split(' ')[0] || 'Student'}
-              </p>
-              <p className="text-xs">{currentUser?.email}</p>
-            </div>
+
+          {/* Profile Section - Enhanced blue goddess energy! 💙 */}
+          <div className="flex items-center space-x-6">
+            
+            {/* Crisis Support Quick Access - Enhanced blue theme support! 🆘 */}
+            <Link
+              to="/resources"
+              className="hidden sm:flex items-center space-x-3 px-4 py-2.5 bg-red-500/90 hover:bg-red-500 text-white rounded-full text-sm font-medium transition-all duration-300 border border-red-400 hover:scale-105 backdrop-blur-sm shadow-lg hover:shadow-xl"
+            >
+              <span className="text-lg">🆘</span>
+              <span>Crisis Support</span>
+            </Link>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 rounded-lg text-blue-100 hover:text-white hover:bg-white/15 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 hover:scale-105"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
         </div>
+
+        {/* Mobile Navigation Menu - Enhanced responsive queen! 📱 */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-white/20 py-4 animate-in slide-in-from-top-2 duration-300 backdrop-blur-sm">
+            <div className="space-y-3">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`flex items-center space-x-4 px-4 py-4 rounded-xl font-medium text-sm transition-all duration-300 ${
+                    isActive(link.path)
+                      ? 'bg-white/20 text-white shadow-lg backdrop-blur-sm ring-1 ring-white/30'
+                      : 'text-blue-100 hover:text-white hover:bg-white/15'
+                  }`}
+                >
+                  <span className="text-xl">{link.icon}</span>
+                  <span className="font-medium">{link.label}</span>
+                </Link>
+              ))}
+              
+              {/* Mobile Crisis Support */}
+              <Link
+                to="/resources"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center space-x-4 px-4 py-4 bg-red-500/20 text-red-100 rounded-xl font-medium text-sm border border-red-400/30 backdrop-blur-sm"
+              >
+                <span className="text-xl">🆘</span>
+                <span className="font-medium">Crisis Support</span>
+              </Link>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Click outside to close profile dropdown */}
+      {isProfileOpen && (
+        <div 
+          className="fixed inset-0 z-40" 
+          onClick={() => setIsProfileOpen(false)}
+        />
       )}
     </nav>
   );
