@@ -10,7 +10,7 @@
 
 ## 📊 System Overview
 
-![Tumaini Platform Interface]
+
 <img width="2960" height="1851" alt="image" src="https://github.com/user-attachments/assets/a828e6c8-c629-430a-8c62-ee071b42e86b" />
 
 *Main Dashboard showcasing comprehensive wellness tracking and analytics*
