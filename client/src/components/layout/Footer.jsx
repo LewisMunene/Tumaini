@@ -21,7 +21,7 @@ const Footer = () => {
               <div className="flex items-center space-x-2">
                 <div>
                   <h3 className="text-xl font-bold">Tumaini</h3>
-                  <p className="text-blue-200 text-sm">Student Wellness Platform</p>
+                  <p className="text-blue-200 text-sm">Academic Stress Management Platform</p>
                 </div>
               </div>
             </div>
